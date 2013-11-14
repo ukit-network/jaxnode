@@ -16,7 +16,8 @@ block content
         h3 Next meeting: 
           strong= meetingArray[0].name
         div= moment(meetingArray[0].time).subtract('hours', 5).format('lll')
-        a(class='mu-rsvp-btn', href='#{meetingArray[0].event_url}', data-event='#{meetingArray[0].id}') RSVP
+        a(class='mu-rsvp-btn', href='#{meetingArray[0].event_url}', data-event='#{meetingArray[0].id}')
+          img(src='images/rsvp_btn.png', alt='RSVP')
         div !{meetingArray[0].description}
       div.panel-body
         -if (meetingArray[0].venue && meetingArray[0].venue.name)
@@ -36,7 +37,6 @@ block content
       small
 
 block append scripts
-    script(src='/js/rsvp.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false')
     script.
       function initialize() {
