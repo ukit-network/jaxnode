@@ -10,6 +10,11 @@ block content
     p The Jax Node.js User Group is for anyone interested in learning more about Node.js. Node allows us to write javascript on the server that is highly scalable and fast. Node.js is based on the V8 javascript engine in the Chrome browser.
     a(class='btn btn-primary', href='http://www.meetup.com/Jax-Node-js-UG') Join our Meetup
     br
+  div.panel.panel-default
+    div.panel-heading
+      h3 Next meeting:
+          strong  Thanks for your support this year. Our next meeting will be the beginning of next year.
+            | Check back soon for updates on our next meeting.
   -if (meetingArray && meetingArray.length > 0)
     div.panel.panel-default
       div.panel-heading
@@ -37,26 +42,27 @@ block content
       small
 
 block append scripts
-    script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false')
-    script.
-      function initialize() {
-          var myLatlng = new google.maps.LatLng(#{meetingArray[0].venue.lat}, #{meetingArray[0].venue.lon});
-          var mapOptions = {
-          center: myLatlng,
-          zoom: 15,
-          mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-          var marker = new google.maps.Marker({
-          position: myLatlng,
-          map: map,
-          title:"#{meetingArray[0].venue.name}"
-        });
-        var infowindow = new google.maps.InfoWindow({
-          content: '<div>#{meetingArray[0].venue.name}</div>'
-        });
-        google.maps.event.addListener(marker, 'click', function() {
-          infowindow.open(map,marker);
-        });
-      }
-      google.maps.event.addDomListener(window, 'load', initialize);
+    -if (meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
+      script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false')
+      script.
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(#{meetingArray[0].venue.lat}, #{meetingArray[0].venue.lon});
+            var mapOptions = {
+            center: myLatlng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title:"#{meetingArray[0].venue.name}"
+          });
+          var infowindow = new google.maps.InfoWindow({
+            content: '<div>#{meetingArray[0].venue.name}</div>'
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+          });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
