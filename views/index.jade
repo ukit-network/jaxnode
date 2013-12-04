@@ -45,7 +45,7 @@ block append scripts
     -if (meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
       script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false')
       script.
-        function initialize() {
+          function initialize() {
             var myLatlng = new google.maps.LatLng(#{meetingArray[0].venue.lat}, #{meetingArray[0].venue.lon});
             var mapOptions = {
             center: myLatlng,
