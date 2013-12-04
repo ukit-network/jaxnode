@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="52f537e4-9a7b-41d4-a07d-65fb36489ad9" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/sponsors.jade" afterPath="$PROJECT_DIR$/views/sponsors.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="52f537e4-9a7b-41d4-a07d-65fb36489ad9" name="Default" comment="" />
     <ignored path="jaxnode.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,7 +26,7 @@
       <file leaf-file-name="index.jade" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/index.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="52" selection-start="979" selection-end="979" vertical-scroll-proportion="0.0" vertical-offset="586" max-vertical-offset="1139">
+            <state line="19" column="52" selection-start="979" selection-end="979" vertical-scroll-proportion="0.0" vertical-offset="323" max-vertical-offset="1139">
               <folding />
             </state>
           </provider>
@@ -204,11 +201,19 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="recentsLimit" value="5" />
-    <property name="restartRequiresConfirmation" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/views/sponsors.jade" />
+    <property name="restartRequiresConfirmation" value="true" />
     <property name="FullScreen" value="false" />
   </component>
   <component name="RunManager" selected="Node.js.StandardRun">
+    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
+      <option name="VMOptions" />
+      <option name="arguments" />
+      <option name="filePath" />
+      <option name="scope" value="ALL" />
+      <option name="testName" />
+      <method />
+    </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
       <option name="VMOptions" />
       <option name="arguments" />
@@ -219,12 +224,8 @@
       <option name="showConsoleOnStdOut" value="false" />
       <method />
     </configuration>
-    <configuration default="true" type="DartUnitRunConfigurationType" factoryName="DartUnit">
-      <option name="VMOptions" />
-      <option name="arguments" />
-      <option name="filePath" />
-      <option name="scope" value="ALL" />
-      <option name="testName" />
+    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="JSTestDriver:ConfigurationType" factoryName="JsTestDriver">
@@ -232,10 +233,6 @@
       <setting name="settingsFile" value="" />
       <setting name="serverType" value="INTERNAL" />
       <setting name="preferredDebugBrowser" value="CHROME" />
-      <method />
-    </configuration>
-    <configuration default="true" type="JavaScriptTestRunnerKarma" factoryName="Karma" singleton="true" config-file="">
-      <envs />
       <method />
     </configuration>
     <configuration default="true" type="NodeJSRemoteDebug" factoryName="Node.js Remote Debug">
@@ -371,23 +368,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/middleware/methodOverride.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="49" column="0" selection-start="1078" selection-end="1078" vertical-scroll-proportion="1.0571429" vertical-offset="389" max-vertical-offset="1105">
-          <folding />
-        </state>
+        <state line="49" column="0" selection-start="1078" selection-end="1078" vertical-scroll-proportion="1.0571429" vertical-offset="389" max-vertical-offset="1105" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express/node_modules/connect/lib/proto.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="196" column="0" selection-start="5060" selection-end="5060" vertical-scroll-proportion="0.33333334" vertical-offset="3192" max-vertical-offset="4012">
-          <folding />
-        </state>
+        <state line="196" column="0" selection-start="5060" selection-end="5060" vertical-scroll-proportion="0.33333334" vertical-offset="3192" max-vertical-offset="4012" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/express/lib/router/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="33" column="0" selection-start="709" selection-end="709" vertical-scroll-proportion="0.33333334" vertical-offset="421" max-vertical-offset="5389">
-          <folding />
-        </state>
+        <state line="33" column="0" selection-start="709" selection-end="709" vertical-scroll-proportion="0.33333334" vertical-offset="421" max-vertical-offset="5389" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
