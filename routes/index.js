@@ -10,12 +10,11 @@ var https = require('https'),
     twitter = require('twitter'),
     async = require('async');
 
-//https://api.meetup.com/2/events?&sign=true&group_id=10250862&page=20&key=71453431395662501f61504236216c32
 
 var httpsOptions = {
 	hostname: 'api.meetup.com',
 	port: 443,
-	path: '/2/events?&sign=true&group_id=10250862&page=20&key=71453431395662501f61504236216c32',
+	path: '/2/events?&sign=true&group_id=10250862&page=20&key=' + process.env.meetupapi_key,
 	method: 'GET'
 };
 
