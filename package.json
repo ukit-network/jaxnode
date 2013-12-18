@@ -9,6 +9,9 @@
     "express": "3.4.0",
 	"memory-cache": "*",
 	"moment": "*",
-    "jade": "*"
+    "jade": "*",
+    "twitter": "*",
+    "util": "*",
+    "async": "*"
   }
 }
