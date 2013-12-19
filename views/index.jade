@@ -12,19 +12,21 @@ block content
       img(src='images/jaxnode.png', class='img-responsive', alt='Jax Node Logo')
       //h1= title
       h1 Welcome to the #{title}
-      p The Jax Node.js User Group is for anyone interested in learning more about Node.js. Node allows us to write javascript on the server that is highly scalable and fast. Node.js is based on the V8 javascript engine in the Chrome browser.
+      p The Jax Node.js User Group is for anyone interested in learning more about Node.js.
+        | Node allows us to write javascript on the server that is highly scalable and fast.
+        | Node.js is based on the V8 javascript engine in the Chrome browser.
       a(class='btn btn-primary', href='http://www.meetup.com/Jax-Node-js-UG') Join our Meetup
       br
     div.panel.panel-default
       div.panel-heading
-        h3 Next meeting:
+        h3 Next meeting: No meeting for December
       .panel-body
         strong  Thanks for your support this year. Our next meeting will be the beginning of next year.
           | Check back soon for updates on our next meeting.
     -if (meetingArray && meetingArray.length > 0)
       div.panel.panel-default
         div.panel-heading
-          h3 Next meeting:
+          h3 Next meeting:&nbsp;
             strong= meetingArray[0].name
           div= moment(meetingArray[0].time).subtract('hours', 5).format('lll')
           a(class='mu-rsvp-btn', href='#{meetingArray[0].event_url}', data-event='#{meetingArray[0].id}')
