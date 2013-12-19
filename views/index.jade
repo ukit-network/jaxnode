@@ -4,7 +4,9 @@ block content
   style(type='text/css').
     #map-canvas { height: 300px; width: 425px; }
     .list-group-item:first-child { background-color: #55ACEE; color: white; }
+    .list-group-item:first-child:hover { background-color: #55ACEE; color: white; }
     .list-group-item:first-child a { color: white; }
+    .list-group-item:hover { background-color: #f5f5f5; }
   .col-md-8
     .jumbotron
       img(src='images/jaxnode.png', class='img-responsive', alt='Jax Node Logo')
@@ -57,7 +59,7 @@ block content
             span.list-group-item-text !{tweet.text}
 
 block append scripts
-    -if (meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
+    -if (meetingArray && meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
       script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false')
       script.
         function initialize() {
