@@ -27,7 +27,6 @@ var twit = new twitter({
 
 function renderIndexWithTweets(res, meetingArray)
 {
-    console.log(process.env);
     var cTweets = cache.get('Tweets');
     if (cTweets !== null)
     {
