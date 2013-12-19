@@ -59,7 +59,6 @@ exports.index = function(req, res){
 	if (cMeetings !== null)
 	{
         renderIndexWithTweets(res, cMeetings);
-		//res.render('index', { title: 'Jax Node User Group', meetingArray: cMeetings });
 	} else {
 		var sreq = https.request(httpsOptions, function (response) {
 			response.setEncoding('utf8');
@@ -72,8 +71,7 @@ exports.index = function(req, res){
 				var meetingObject = JSON.parse(nextMeeting);
 				cache.put('nextMeeting', meetingObject.results, 3600000);
 				nextMeeting = "";
-                renderIndexWithTweets(res, meetingObject.results);
-				//res.render('index', { title: 'Jax Node User Group', meetingArray: meetingObject.results });
+				renderIndexWithTweets(res, meetingObject.results);
 			});
 		});
 		sreq.on('error', function(e) {
