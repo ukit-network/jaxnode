@@ -42,7 +42,6 @@ function renderIndexWithTweets(res, meetingArray)
 }
 
 function gatherTweets(item, callback) {
-    var textwoanchors = 'I love Stackoverflow so much, so please visist http://stackoverflow.com';
     var resultText = item.text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/, '<a href="$1">$1</a>');
     var twitterText = resultText.replace(/@(\w+)/, '<a href="https://twitter.com/$1">@$1</a>');
     callback(null, { text: twitterText, icon: item.user.profile_image_url, name: item.user.screen_name });
