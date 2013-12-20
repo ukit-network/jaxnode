@@ -31,8 +31,8 @@ block content
           div= moment(meetingArray[0].time).subtract('hours', 5).format('lll')
           a(class='mu-rsvp-btn', href='#{meetingArray[0].event_url}', data-event='#{meetingArray[0].id}')
             img(src='images/rsvp_btn.png', alt='RSVP')
-          div !{meetingArray[0].description}
         div.panel-body
+          div !{meetingArray[0].description}
           -if (meetingArray[0].venue && meetingArray[0].venue.name)
             #map-canvas.pull-left
             br
