@@ -67,10 +67,17 @@ exports.index = function(req, res){
 			});
 			response.on('end', function() {
 				console.log('request has ended.');
-				var meetingObject = JSON.parse(nextMeeting);
-				cache.put('nextMeeting', meetingObject.results, 3600000);
-				nextMeeting = "";
-				renderIndexWithTweets(res, meetingObject.results);
+				if (nextMeeting && nextMeeting.toString().slice(0,6) !== "<html>")
+				{
+					var meetingObject = JSON.parse(nextMeeting);
+					cache.put('nextMeeting', meetingObject.results, 3600000);
+					nextMeeting = "";
+					renderIndexWithTweets(res, meetingObject.results);
+				} else {
+					var meetingObject = {};
+					meetingObject.results = [];
+					renderIndexWithTweets(res, meetingObject.results);
+				}
 			});
 		});
 		sreq.on('error', function(e) {
