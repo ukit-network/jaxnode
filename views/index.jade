@@ -7,6 +7,7 @@ block content
     .list-group-item:first-child:hover { background-color: #55ACEE; color: white; }
     .list-group-item:first-child a { color: white; }
     .list-group-item:hover { background-color: #f5f5f5; }
+    #addressWell { margin: 15px; }
   .col-md-8
     .jumbotron
       img(src='images/jaxnode.png', class='img-responsive', alt='Jax Node Logo')
@@ -29,9 +30,7 @@ block content
           div !{meetingArray[0].description}
           -if (meetingArray[0].venue && meetingArray[0].venue.name)
             #map-canvas.pull-left
-            br
-            br
-            div.well.well-lg.pull-left= meetingArray[0].venue.name
+            div#addressWell.well.well-lg.pull-left= meetingArray[0].venue.name
               br
               -if (meetingArray[0].venue && meetingArray[0].venue.address_1)
                 = meetingArray[0].venue.address_1
