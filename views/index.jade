@@ -11,14 +11,13 @@ block content
   .col-md-8
     .jumbotron
       img(src='images/jaxnode.png', class='img-responsive', alt='Jax Node Logo')
-      //h1= title
       h1 Welcome to the #{title}
       p The Jax Node.js User Group is for anyone interested in learning more about Node.js.
         | Node allows us to write javascript on the server that is highly scalable and fast.
         | Node.js is based on the V8 javascript engine in the Chrome browser.
       a(class='btn btn-primary', href='http://www.meetup.com/Jax-Node-js-UG') Join our Meetup
       br
-    -if (meetingArray && meetingArray.length > 0)
+    if (meetingArray && meetingArray.length > 0)
       div.panel.panel-default
         div.panel-heading
           h3 Next meeting:&nbsp;
@@ -28,21 +27,20 @@ block content
             img(src='images/rsvp_btn.png', alt='RSVP')
         div.panel-body
           div !{meetingArray[0].description}
-          -if (meetingArray[0].venue && meetingArray[0].venue.name)
+          if (meetingArray[0].venue && meetingArray[0].venue.name)
             #map-canvas.pull-left
             div#addressWell.well.well-lg.pull-left= meetingArray[0].venue.name
               br
-              -if (meetingArray[0].venue && meetingArray[0].venue.address_1)
+              if (meetingArray[0].venue && meetingArray[0].venue.address_1)
                 = meetingArray[0].venue.address_1
-                br
-              -if (meetingArray[0].venue && meetingArray[0].venue.city)
+              if (meetingArray[0].venue && meetingArray[0].venue.city)
                 = meetingArray[0].venue.city
-              -if (meetingArray[0].venue && meetingArray[0].venue.state)
+              if (meetingArray[0].venue && meetingArray[0].venue.state)
                 = ' ' + meetingArray[0].venue.state
-              -if (meetingArray[0].venue && meetingArray[0].venue.zip)
+              if (meetingArray[0].venue && meetingArray[0].venue.zip)
                 = ' ' + meetingArray[0].venue.zip
       br
-        small
+      small
   .col-md-4
     ul.list-group
       li.list-group-item
@@ -54,7 +52,7 @@ block content
             span.list-group-item-text !{tweet.text}
 
 block append scripts
-    -if (meetingArray && meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
+    if (meetingArray && meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
       script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false')
       script.
         function initialize() {

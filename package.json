@@ -1,5 +1,5 @@
 {
-  "name": "JaxNode User Group",
+  "name": "JaxNodeUserGroup",
   "version": "0.0.1",
   "private": true,
   "main": "app.js",
@@ -8,13 +8,11 @@
   },
   "dependencies": {
     "express": "3.4.0",
-    "memory-cache": "*",
-    "moment": "*",
-    "jade": "*",
-    "twitter": "*",
-    "util": "*",
-    "async": "*",
-    "hapi": "~6.2.1",
-    "handlebars": "~2.0.0-alpha.4"
+    "memory-cache": "0.0.5",
+    "moment": "~2.8.2",
+    "jade": "~1.5.0",
+    "twitter": "~0.2.9",
+    "util": "~0.10.3",
+    "async": "~0.9.0"
   }
 }
