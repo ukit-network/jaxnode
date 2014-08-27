@@ -33,10 +33,11 @@ block content
               br
               if (meetingArray[0].venue && meetingArray[0].venue.address_1)
                 = meetingArray[0].venue.address_1
+                br
               if (meetingArray[0].venue && meetingArray[0].venue.city)
                 = meetingArray[0].venue.city
               if (meetingArray[0].venue && meetingArray[0].venue.state)
-                = ' ' + meetingArray[0].venue.state
+                = ', ' + meetingArray[0].venue.state
               if (meetingArray[0].venue && meetingArray[0].venue.zip)
                 = ' ' + meetingArray[0].venue.zip
       br
