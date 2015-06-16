@@ -22,7 +22,8 @@ block content
         div.panel-heading
           h3 Next meeting:&nbsp;
             strong= meetingArray[0].name
-          div= moment(meetingArray[0].time).subtract('hours', 4).format('lll')
+            // moment(meetingArray[0].time).subtract('hours', 4).format('lll')
+          div= meetingArray[0].time
           a(class='mu-rsvp-btn', href='#{meetingArray[0].event_url}', data-event='#{meetingArray[0].id}')
             img(src='images/rsvp_btn.png', alt='RSVP')
         div.panel-body
