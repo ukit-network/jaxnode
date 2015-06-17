@@ -13,4 +13,6 @@ They are as follows;
 * process.env.twitter_atk = Twitter access_token_key
 * process.env.twitter_ats = Twitter access_token_secret
 
+Moved site to Heroku.
+
 Copyright 2013 David Fekke
