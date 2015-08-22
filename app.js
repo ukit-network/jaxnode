@@ -1,3 +1,4 @@
+/// <reference path="typings/node/node.d.ts"/>
 
 /**
  * Module dependencies.
@@ -13,6 +14,7 @@ var path = require('path');
 
 var app = express();
 
+
 // all environments
 app.set('port', process.env.PORT || 3000);
 app.set('views', __dirname + '/views');
@@ -23,8 +25,6 @@ app.use(express.methodOverride());
 app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
-
-app.locals.moment = require('moment');
 
 // development only
 if ('development' == app.get('env')) {

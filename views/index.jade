@@ -3,46 +3,58 @@ extends layout
 block content
   style(type='text/css').
     #map-canvas { height: 300px; width: 425px; }
-  .jumbotron
-    img(src='images/jaxnode.png', class='img-responsive', alt='Jax Node Logo')
-    h1= title
-    p Welcome to the #{title}
-    p The Jax Node.js User Group is for anyone interested in learning more about Node.js. Node allows us to write javascript on the server that is highly scalable and fast. Node.js is based on the V8 javascript engine in the Chrome browser.
-    a(class='btn btn-primary', href='http://www.meetup.com/Jax-Node-js-UG') Join our Meetup
-    br
-  div.panel.panel-default
-    div.panel-heading
-      h3 Next meeting:
-          strong  Thanks for your support this year. Our next meeting will be the beginning of next year.
-            | Check back soon for updates on our next meeting.
-  -if (meetingArray && meetingArray.length > 0)
-    div.panel.panel-default
-      div.panel-heading
-        h3 Next meeting: 
-          strong= meetingArray[0].name
-        div= moment(meetingArray[0].time).subtract('hours', 5).format('lll')
-        a(class='mu-rsvp-btn', href='#{meetingArray[0].event_url}', data-event='#{meetingArray[0].id}')
-          img(src='images/rsvp_btn.png', alt='RSVP')
-        div !{meetingArray[0].description}
-      div.panel-body
-        -if (meetingArray[0].venue && meetingArray[0].venue.name)
-          #map-canvas.pull-left
-          div.well.well-lg.pull-right= meetingArray[0].venue.name
-            br
-            -if (meetingArray[0].venue && meetingArray[0].venue.address_1)
-              = meetingArray[0].venue.address_1
+    .list-group-item:first-child { background-color: #55ACEE; color: white; }
+    .list-group-item:first-child:hover { background-color: #55ACEE; color: white; }
+    .list-group-item:first-child a { color: white; }
+    .list-group-item:hover { background-color: #f5f5f5; }
+    #addressWell { margin: 15px; }
+  .col-md-8
+    .jumbotron
+      img(src='images/jaxnode.png', class='img-responsive', alt='Jax Node Logo')
+      h1 Welcome to the #{title}
+      p The Jax Node.js User Group is for anyone interested in learning more about Node.js.
+        | Node allows us to write javascript on the server, desktop and even robots that is highly scalable and fast.
+        | Node.js is based on the V8 javascript engine in the Chrome browser.
+      a(class='btn btn-primary', href='http://www.meetup.com/Jax-Node-js-UG') Join our Meetup
+      br
+    if (meetingArray && meetingArray.length > 0)
+      div.panel.panel-default
+        div.panel-heading
+          h3 Next meeting:&nbsp;
+            strong= meetingArray[0].name
+            // moment(meetingArray[0].time).subtract('hours', 4).format('lll')
+          div= meetingArray[0].time
+          a(class='mu-rsvp-btn', href='#{meetingArray[0].event_url}', data-event='#{meetingArray[0].id}')
+            img(src='images/rsvp_btn.png', alt='RSVP')
+        div.panel-body
+          div !{meetingArray[0].description}
+          if (meetingArray[0].venue && meetingArray[0].venue.name)
+            #map-canvas.pull-left
+            div#addressWell.well.well-lg.pull-left= meetingArray[0].venue.name
               br
-            -if (meetingArray[0].venue && meetingArray[0].venue.city)
-              = meetingArray[0].venue.city
-            -if (meetingArray[0].venue && meetingArray[0].venue.state)
-              = ' ' + meetingArray[0].venue.state
-            -if (meetingArray[0].venue && meetingArray[0].venue.zip)
-              = ' ' + meetingArray[0].venue.zip
-    br
+              if (meetingArray[0].venue && meetingArray[0].venue.address_1)
+                = meetingArray[0].venue.address_1
+                br
+              if (meetingArray[0].venue && meetingArray[0].venue.city)
+                = meetingArray[0].venue.city
+              if (meetingArray[0].venue && meetingArray[0].venue.state)
+                = ', ' + meetingArray[0].venue.state
+              if (meetingArray[0].venue && meetingArray[0].venue.zip)
+                = ' ' + meetingArray[0].venue.zip
+      br
       small
+  .col-md-4
+    ul.list-group
+      li.list-group-item
+          img(src='/images/Twitter_logo_white_sm.png')
+          a(href='https://twitter.com/jaxnode', alt='JaxNode on Twitter') @Jaxnode
+          |  on Twitter
+        each tweet in tweets
+          li.list-group-item
+            span.list-group-item-text !{tweet.text}
 
 block append scripts
-    -if (meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
+    if (meetingArray && meetingArray[0] && meetingArray[0].venue && meetingArray[0].venue.lat && meetingArray[0].venue.lon)
       script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false')
       script.
         function initialize() {
