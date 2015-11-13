@@ -110,3 +110,10 @@ exports.index = function(req, res) {
 		sreq.end();
 	}
 };
+
+/*
+ * Setting up link to GitHub
+ */
+exports.code = function(req, res) {
+	res.render('code', { title: 'Jax Node GitHub code'  });
+};
