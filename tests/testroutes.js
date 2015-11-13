@@ -24,6 +24,7 @@ app.use(app.router);
 app.get('/', routes.index);
 app.get('/Contact', contact.contact);
 app.get('/Sponsors', sponsors.list);
+app.get('/Code', routes.code);
 
 describe("Routes", function() {
   describe("GET Index", function() {
@@ -52,6 +53,14 @@ describe("Routes", function() {
     it('responds to /Contact', function testContactUs(done) {
       request(app)
       .get('/Contact')
+      .expect(200, done);
+    });
+  });
+  
+  describe('GET Code', function() {
+    it('responds to /Code', function testContactUs(done) {
+      request(app)
+      .get('/Code')
       .expect(200, done);
     });
   });

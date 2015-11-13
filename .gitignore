@@ -17,5 +17,9 @@ results
 npm-debug.log
 node_modules
 bower_components
+<<<<<<< HEAD
+public/images/NodeNamePlate.psd
+=======
 
 .idea/*
+>>>>>>> 5a4d3f59951c5beacc6f3711f294fd1484c140ab
