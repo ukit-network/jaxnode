@@ -22,6 +22,20 @@ var httpsOptions = {
 };
 
 /*
+ * Set up GitHub http options for the GitHub API.
+ */
+var gitHubOptions = {
+	hostname: 'api.github.com',
+	port: 443,
+	path: '/users/jaxnode/repos',
+	method: 'GET',
+	headers: {
+		'Accept': 'application/vnd.github.v3+json',
+		'User-Agent': 'JaxNode'
+	}
+};
+
+/*
  * Set up options for the Twitter API.
  */
 var twit = new twitter({
@@ -115,5 +129,33 @@ exports.index = function(req, res) {
  * Setting up link to GitHub
  */
 exports.code = function(req, res) {
-	res.render('code', { title: 'Jax Node GitHub code'  });
+	var reposText = "";
+	var githubReq = https.request(gitHubOptions, function(response) {
+		response.setEncoding('utf8');
+		response.on('data', function (chunk) {
+			console.log('receiving data.');
+			reposText += chunk;
+		});
+		response.on('end', function() {
+			console.log('request has ended.');
+			//console.log(reposText);
+			var reposArray =  JSON.parse(reposText);
+			//console.log(reposArray);
+			//, repos: reposArray 
+			res.render('code', { title: 'Jax Node GitHub code', repos: reposArray });		
+		});
+	});
+	githubReq.on('error', function(e) {
+		console.log('problem with request: ' + e.message);
+	});
+	githubReq.write('data\n');
+	githubReq.end();
 };
+
+/*
+  each repo in repos
+    -if (repo.name.length > 0)
+      p= repo.name
+    -if (repo.html_url.length > 0)
+      p= repo.html_url
+*/
