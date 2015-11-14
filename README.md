@@ -2,7 +2,7 @@
 
 This is the source code for the JaxNode website.
 
-[![Build Status](https://travis-ci.org/davidfekke/jaxnode.svg?branch=add-tests)](https://travis-ci.org/davidfekke/jaxnode)
+[![Build Status](https://travis-ci.org/davidfekke/jaxnode.svg?branch=release)](https://travis-ci.org/davidfekke/jaxnode)
 
 The website can be viewed at [http://www.jaxnode.com](http://www.jaxnode.com).
 
