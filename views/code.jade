@@ -6,5 +6,22 @@ block content
     a(href='https://github.com/jaxnode/') GitHub page.
   each repo in repos
     -if (repo.name.length > 0 && repo.html_url.length > 0)
-      h3 
-        a(href=repo.html_url)= repo.name
+      div.panel.panel-primary
+        div.panel-heading
+          h3= repo.name
+        div.panel.panel-body
+          a(href=repo.html_url)= repo.html_url
+          br 
+          br
+          = repo.description
+          You can install the following repo by typing the following command in your terminal
+          br
+          br
+          blockquote
+            p git clone #{repo.clone_url} 
+          p 
+            strong Default Branch: 
+            = repo.default_branch 
+            &nbsp;
+            strong Language: 
+            = repo.language
