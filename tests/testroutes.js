@@ -45,6 +45,7 @@ describe("Routes", function() {
     it('responds to /Sponsors', function testSponsors(done) {
       request(app)
       .get('/Sponsors')
+      .expect('Content-Type', /text\/html/)
       .expect(200, done);
     });
   });
@@ -53,6 +54,7 @@ describe("Routes", function() {
     it('responds to /Contact', function testContactUs(done) {
       request(app)
       .get('/Contact')
+      .expect('Content-Type', /text\/html/)
       .expect(200, done);
     });
   });
@@ -61,6 +63,7 @@ describe("Routes", function() {
     it('responds to /Code', function testContactUs(done) {
       request(app)
       .get('/Code')
+      .expect('Content-Type', /text\/html/)
       .expect(200, done);
     });
   });
