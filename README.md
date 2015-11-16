@@ -15,6 +15,6 @@ They are as follows;
 * process.env.twitter_atk = Twitter access_token_key
 * process.env.twitter_ats = Twitter access_token_secret
 
-Moved site to Heroku.
+Moved site to Heroku. Upgraded to Node.js v5.0.
 
 Copyright 2015 David Fekke
