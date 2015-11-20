@@ -60,7 +60,7 @@ describe("Routes", function() {
   });
   
   describe('GET Code', function() {
-    it('responds to /Code', function testContactUs(done) {
+    it('responds to /Code', function testCode(done) {
       request(app)
       .get('/Code')
       .expect('Content-Type', /text\/html/)
