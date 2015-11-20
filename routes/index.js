@@ -133,7 +133,7 @@ exports.code = function(req, res) {
 	var githubReq = https.request(gitHubOptions, function(response) {
 		response.setEncoding('utf8');
 		response.on('data', function (chunk) {
-			console.log('receiving data.');
+			//console.log('receiving data.');
 			reposText += chunk;
 		});
 		response.on('end', function() {
