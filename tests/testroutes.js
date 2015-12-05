@@ -24,6 +24,7 @@ app.use(app.router);
 app.get('/', routes.index);
 app.get('/Contact', contact.contact);
 app.get('/Sponsors', sponsors.list);
+app.get('/Code', routes.code);
 
 describe("Routes", function() {
   describe("GET Index", function() {
@@ -44,6 +45,7 @@ describe("Routes", function() {
     it('responds to /Sponsors', function testSponsors(done) {
       request(app)
       .get('/Sponsors')
+      .expect('Content-Type', /text\/html/)
       .expect(200, done);
     });
   });
@@ -52,6 +54,16 @@ describe("Routes", function() {
     it('responds to /Contact', function testContactUs(done) {
       request(app)
       .get('/Contact')
+      .expect('Content-Type', /text\/html/)
+      .expect(200, done);
+    });
+  });
+  
+  describe('GET Code', function() {
+    it('responds to /Code', function testCode(done) {
+      request(app)
+      .get('/Code')
+      .expect('Content-Type', /text\/html/)
       .expect(200, done);
     });
   });
