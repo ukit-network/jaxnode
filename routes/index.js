@@ -165,7 +165,7 @@ exports.code = function(req, res) {
  */
 exports.api = function(req, res) {
 	var cMeetings = cache.get('nextMeeting');
-	if (cMeetings !== null)
+	if (typeof cMeetings !== 'undefined' && cMeetings !== null)
 	{
 		res.send({ meeting: cMeetings[0] });
 	} else {
