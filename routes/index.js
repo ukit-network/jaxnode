@@ -185,7 +185,11 @@ exports.api = function(req, res) {
 					cache.put('nextMeeting', meetingArray, 3600000);
 					nextMeeting = "";
 					console.log(meetingArray);
-					res.send({ meeting: meetingArray[0] });
+					if (typeof meetingArray !== 'undefined') {
+						res.send({ meeting: meetingArray[0] });	
+					} else {
+						res.send({ meeting: {} });	
+					}
 				} else {
 					res.send({ meeting: {} });
 				}
