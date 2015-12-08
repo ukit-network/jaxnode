@@ -89,7 +89,7 @@ function setTimeToNewYork(meetingArray) {
  */
 exports.index = function(req, res) {
 	var cMeetings = cache.get('nextMeeting');
-	if (cMeetings !== null)
+	if (typeof cMeetings !== 'undefined' && cMeetings !== null)
 	{
         renderIndexWithTweets(res, cMeetings);
 	} else {
