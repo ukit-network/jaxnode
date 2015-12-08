@@ -31,7 +31,7 @@ describe("Routes", function() {
   describe("GET Index", function() {
 
     it('responds to /', function testHomepage(done) {
-      this.timeout(5000);
+      this.timeout(10000);
         request(app)
           .get('/')
           .expect('Content-Type', /text\/html/)
