@@ -47,6 +47,8 @@ MeetupData.prototype.getNextMeetup = function getNextMeetup(cb) {
 				setTimeToNewYork(meetingArray);
 				cache.put('nextMeeting', meetingArray, 3600000);
 				nextMeeting = "";
+				console.log('meeting object debug point');
+				console.log(meetingArray);
 				cb(err, meetingArray[0]);
 			} else {
 				var meetingObject = {};
