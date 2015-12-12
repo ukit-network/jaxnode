@@ -4,12 +4,6 @@
  */
 
 var https = require('https'),
-	// nextMeeting = "",
-	// cache = require('memory-cache'),
-    // util = require('util'),
-    // twitter = require('twitter'),
-    // async = require('async'),
-	// moment = require('moment-timezone'),
 	GitHubData = require('../services/githubdata.js'),
 	twitterdata = require('../services/twitterdata.js'),
 	meetupdata = require('../services/meetupdata.js'),
