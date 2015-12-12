@@ -41,16 +41,12 @@ MeetupData.prototype.getNextMeetup = function getNextMeetup(cb) {
 			var err = false;
 			if (nextMeeting && nextMeeting.toString().slice(0,6) !== "<html>")
 			{
-				console.log('meeting object debug point 1');
-				console.log(nextMeeting);
 				var meetingObject = JSON.parse(nextMeeting);
 				var meetingArray = meetingObject.results;
 				// permanent fix for the changing timezone plus moment deprecation fix.
 				setTimeToNewYork(meetingArray);
 				cache.put('nextMeeting', meetingArray, 3600000);
 				nextMeeting = "";
-				console.log('meeting object debug point 2');
-				console.log(meetingArray);
 				cb(err, meetingArray[0]);
 			} else {
 				var meetingObject = {};
