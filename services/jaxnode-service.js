@@ -6,12 +6,12 @@ var Service = function Service(meetupdata, twitterdata) {
 	this.Twitter = twitterdata;
 }
 
-Service.prototype.getNextMeetup = function getNextMeetup() {
-	
+Service.prototype.getNextMeetup = function getNextMeetup(cb) {
+	this.Meetup.getNextMeetup(cb);
 };
 
-Service.prototype.getTweets = function getTweets() {
-	
+Service.prototype.getTweets = function getTweets(cb) {
+	this.Twitter.getFeed(cb);
 };
 
 function create(meetupdata, twitterdata) {
