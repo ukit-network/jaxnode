@@ -11,6 +11,7 @@ var servicefactory = require('./services/jaxnode-service.js');
 var service = servicefactory(meetupdata, twitterdata);
 
 var routes = require('./routes/index');
+var routesForApps = require('./routes/appsroutes');
 
 var app = express();
 
@@ -49,6 +50,7 @@ var exposeService = function(req, resp, next){
 };
 
 app.use('/', exposeService, routes);
+app.use('/apps', routesForApps);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

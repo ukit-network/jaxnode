@@ -8,6 +8,7 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('../routes/index');
+var routesForApps = require('../routes/appsroutes');
 var contact = require('../routes/contact');
 var sponsors = require('../routes/sponsors');
 
@@ -53,10 +54,7 @@ var exposeService = function(req, resp, next){
 };
 
 app.use('/', exposeService, routes);
-//app.get('/Contact', contact.contact);
-//app.get('/Sponsors', sponsors.list);
-//app.get('/Code', exposeService, routes.code);
-//app.get('/api', exposeService, routes.api);
+app.use('/apps', routesForApps);
 
 describe("Routes", function() {
   describe("GET Index", function() {
@@ -101,6 +99,15 @@ describe("Routes", function() {
     it('responds to /Sponsors', function testSponsors(done) {
       request(app)
       .get('/Sponsors')
+      .expect('Content-Type', /text\/html/)
+      .expect(200, done);
+    });
+  });
+  
+  describe('GET Apps', function() {
+    it('responds to /Apps', function testSponsors(done) {
+      request(app)
+      .get('/apps')
       .expect('Content-Type', /text\/html/)
       .expect(200, done);
     });

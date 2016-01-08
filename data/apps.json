@@ -1,0 +1,9 @@
+[
+    {
+        "title": "JaxNodeNext",
+        "description": "Command line tool for checking on the next jaxnode meeting",
+        "githuburl": "https://github.com/davidfekke/jaxnodenext",
+        "npmname": "jaxnodenext",
+        "howtoinstall": "npm install -g jaxnodenext"
+    }
+]
