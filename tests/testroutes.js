@@ -105,11 +105,29 @@ describe("Routes", function() {
   });
   
   describe('GET Apps', function() {
-    it('responds to /Apps', function testSponsors(done) {
+    it('responds to /Apps', function testApps(done) {
       request(app)
       .get('/apps')
       .expect('Content-Type', /text\/html/)
       .expect(200, done);
+    });
+  });
+  
+  describe('GET App JaxNodeNext', function() {
+    it('responds to /Apps/JaxNodeNext', function testAppJaxNodeNext(done) {
+      request(app)
+      .get('/apps/JaxNodeNext')
+      .expect('Content-Type', /text\/html/)
+      .expect(200, done);
+    });
+  });
+  
+  describe('GET App NonExistent', function() {
+    it('responds to /Apps/NonExistent', function testAppJaxNodeNext(done) {
+      request(app)
+      .get('/apps/NonExistent')
+      .expect('Content-Type', /text\/html/)
+      .expect(404, done);
     });
   });
   
