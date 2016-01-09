@@ -21,21 +21,10 @@ var path = require('path');
 
 var expect = chai.expect;
 
-
 var app = express();
 var hbs = require('express-hbs');
-
-hbs.registerHelper('activeMenu', function(route, name, test, title) {
-  if (test === title) {
-    return new hbs.SafeString(
-        "<li class='active'><a href='" + route + "'>" + name + "</a></li>"
-    );    
-  } else {
-    return new hbs.SafeString(
-        "<li><a href='" + route + "'>" + name + "</a></li>"
-    );
-  }
-});
+var hbsHelpers = require('../services/hbsHelpers.js');
+hbsHelpers(hbs);
 
 app.set('port', process.env.PORT || 3000);
 app.engine('hbs', hbs.express4());
