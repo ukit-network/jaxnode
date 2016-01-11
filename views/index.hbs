@@ -83,10 +83,10 @@
             var marker = new google.maps.Marker({
             position: myLatlng,
             map: map,
-            title:"#{meeting.venue.name}"
+            title:"{{{meeting.venue.name}}}"
           });
           var infowindow = new google.maps.InfoWindow({
-            content: '<div>#{meeting.venue.name}</div>'
+            content: '<div>{{meeting.venue.name}}</div>'
           });
           google.maps.event.addListener(marker, 'click', function() {
             infowindow.open(map,marker);
