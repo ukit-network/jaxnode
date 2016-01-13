@@ -1,9 +1,9 @@
 /// <reference path="../typings/mocha/mocha.d.ts"/>
 "use strict";
 
-var twitterfake = require('../services/twitterfake.js');
-var meetupfake = require('../services/meetupfake.js');
-var githubdata = require('../services/githubfake.js');
+var twitterfake = require('../fakes/twitterfake.js');
+var meetupfake = require('../fakes/meetupfake.js');
+var githubdata = require('../fakes/githubfake.js');
 var factory = require('../services/jaxnode-service.js');
 var servicefake = factory(meetupfake, twitterfake);
 var path = require('path'); 
