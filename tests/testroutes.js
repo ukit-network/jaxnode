@@ -38,7 +38,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 var exposeService = function(req, resp, next){
     req.service = service;
-    req.GitHubData = githubData;
+    req.getCode = githubData;
     next();
 };
 

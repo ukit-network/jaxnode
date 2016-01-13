@@ -36,7 +36,7 @@ describe("Services", function() {
   
   describe("GET GitHub Code", function() {
   	it('Grab repos', function getGitHubData(done) {
-      githubdata.getCode(function (err, results) {
+      githubdata(function (err, results) {
         if (err) return done(err)
         assert('gulptest' === results.repos[0].name);
         //console.log(results.repos[0].name);
