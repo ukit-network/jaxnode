@@ -15,8 +15,11 @@ exports.index = function index(req, res) {
 				} else {
                     var displayMeetup = Object.keys(meetingArray).length !== 0;
                     var displayTweets = tweetResults.tweets.length !== 0;
-                    console.log(displayMeetup);
-					res.render('index', { title: 'JaxNode User Group', meeting: meetingArray, tweets: tweetResults.tweets, displayMeetup: displayMeetup, displayTweets: displayTweets  });
+                    var displayCodeOnTheBeach = true;
+                    if (req.cookies.doCodeOnTheBeachOnlyOnce === 'true') {
+                        displayCodeOnTheBeach = false;
+                    }
+					res.render('index', { title: 'JaxNode User Group', meeting: meetingArray, tweets: tweetResults.tweets, displayMeetup: displayMeetup, displayTweets: displayTweets, displayCodeOnTheBeach: displayCodeOnTheBeach  });
 				}
 			});
 		}
