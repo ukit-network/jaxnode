@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "mon": "nodemon ./bin/www",
-    "test": "mocha tests/*.js"
+    "test": "gulp"
   },
   "dependencies": {
     "async": "^1.5.1",
