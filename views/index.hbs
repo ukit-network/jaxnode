@@ -28,12 +28,24 @@
 
 <div class="col-md-8">
     <div class="jumbotron">
-        <img src="images/jaxnodejs.png" alt="Jax Node Logo" class="img-responsive">
+        <div class="text-center vertical-center">
+            <div class="col-md-4">
+                <img src="images/jaxnodejs.png" alt="Jax Node Logo" class="img-responsive">
+            </div>
+            <div class="col-md-2">
+                <span>&amp;</span>
+            </div>
+            <div class="col-md-4">
+                <img src="images/jaxbeerjs.png" alt="Jax Beer.js Logo" class="img-responsive">
+            </div>
+        </div>
+        
+        
         <h2>Welcome to the JaxNode User Group</h2>
         <p>The Jacksonville Node.js and Javascript User Group is for anyone interested in learning more about Node.js and JavaScript.
             JavaScript was originally created for scripting web browsers, but now JavaScript applications 
             run on the server, desktop and even robots.</p><p>Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, 
-            non-blocking I/O model that makes it lightweight and efficient. 
+            non-blocking I/O model that makes it lightweight and efficient.
         </p>
         <a href="http://www.meetup.com/Jax-Node-js-UG" class="btn btn-primary">Join our Meetup</a>
         <br />
@@ -57,7 +69,7 @@
             <div>{{meeting.time}}</div>
             <a href='{{meeting.event_url}}' data-event='{{meeting.id}}' class='mu-rsvp-btn'><img src="images/rsvp_btn.png" alt="RSVP"></a>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" id="meeting-description">
             <div>
                 {{{meeting.description}}}
             </div>
@@ -115,6 +127,7 @@
         }
         google.maps.event.addDomListener(window, 'load', initialize);
     {{/if}}
+        $('#meeting-description img').addClass('img-responsive');
         
         setTimeout(closeAlert, 10000);
         
