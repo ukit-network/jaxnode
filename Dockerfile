@@ -8,4 +8,4 @@ RUN npm install
 
 # Add your source files
 COPY . /src  
-CMD ["npm","start"] 
+# CMD ["npm","start"] 
