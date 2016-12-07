@@ -60,7 +60,6 @@ exports.code = function code(req, res) {
                 }
             });
         } else {
-            console.log(results.repos);
             res.render('code', { title: 'Jax Node GitHub code', repos: results.repos });
         }
     });
