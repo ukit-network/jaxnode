@@ -22,4 +22,4 @@ They are as follows;
 
 Moved site to Heroku. Upgraded to Node.js v7.8.0.
 
-Copyright 2016 David Fekke
+Copyright 2017 David Fekke
