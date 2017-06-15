@@ -1,4 +1,4 @@
-FROM node:8.1.0
+FROM node:8.1.2
 
 RUN curl -o- -L https://yarnpkg.com/install.sh | bash
 ENV PATH "$PATH:/root/.yarn/bin"
