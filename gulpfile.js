@@ -23,10 +23,10 @@ gulp.task('nsp', function (cb) {
 
 gulp.task('pre-test', function () {
     return gulp.src('routes/*.js')
-    .pipe(istanbul({
-        includeUntested: true
-    }))
-    .pipe(istanbul.hookRequire());
+        .pipe(istanbul({
+            includeUntested: true
+        }))
+        .pipe(istanbul.hookRequire());
 });
 
 gulp.task('test', ['pre-test'], function (cb) {

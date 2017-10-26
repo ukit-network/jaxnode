@@ -1,11 +1,14 @@
 'use strict';
 var request = require('supertest');
+var chai = require('chai');
+var assert = chai.assert;
 var express = require('express');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('../routes/index');
+var indexRouteFunctions = require('../routes/index-route-functions');
 var routesForApps = require('../routes/appsroutes');
 
 var twitterdata = require('../fakes/twitterfake.js');
@@ -73,6 +76,16 @@ describe('Routes', function () {
         });
     });
 
+    describe('GET Code with Page', function () {
+        it('responds to /Code/1', function testCode(done) {
+            this.timeout(10000);
+            request(app)
+                .get('/Code/1')
+                .expect('Content-Type', /text\/html/)
+                .expect(200, done);
+        });
+    });
+
     describe('GET Api', function () {
         this.timeout(10000);
         it('responds to /api', function testApi(done) {
@@ -134,6 +147,32 @@ describe('Routes', function () {
                 .get('/apps/NonExistent')
                 .expect('Content-Type', /text\/html/)
                 .expect(404, done);
+        });
+    });
+
+    describe('test Route Function for compare:', function () {
+        it('Test all of the compare options', function testAllCompareOptions(done) {
+            const myArray = [
+                {
+                    name: 'bad',
+                    age: 2
+                },
+                {
+                    name: 'air',
+                    age: 20
+                },
+                {
+                    name: 'car',
+                    age: 1
+                },
+                {
+                    name: 'car',
+                    age: 5
+                }
+            ];
+            const sortedArray = myArray.sort(indexRouteFunctions.nameCompare);
+            assert(sortedArray[0].name, 'air');
+            done();
         });
     });
 

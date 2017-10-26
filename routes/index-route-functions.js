@@ -49,6 +49,10 @@ exports.index = function index(req, res) {
 };
 
 exports.code = function code(req, res) {
+    var pagenum = 0;
+    if (req.params.page && !isNaN(req.params.page)) {
+        pagenum = req.params.page;
+    }
     req.getCode(function callback(err, results) {
         if (err) {
             console.log('problem with request: ' + err);
@@ -60,7 +64,10 @@ exports.code = function code(req, res) {
                 }
             });
         } else {
-            res.render('code', { title: 'Jax Node GitHub code', repos: results.repos });
+            const sortedRepos = results.repos.sort(nameCompare);
+            const repopage = sortedRepos.slice(parseInt(pagenum) * 10, parseInt(pagenum) * 10 + 10);
+            const pageCount = Math.ceil(sortedRepos.length / 10);
+            res.render('code', { title: 'Jax Node GitHub code', repos: repopage, currPage: pagenum, pageCount: pageCount });
         }
     });
 };
@@ -75,3 +82,20 @@ exports.api = function api(req, res) {
         }
     });
 };
+
+function nameCompare(a, b) {
+    // if (a.name === undefined || b.name === undefined) {
+    //     return 0;
+    // }
+    const nameA = a.name.toLowerCase();
+    const nameB = b.name.toLowerCase();
+    if (nameA < nameB) { //sort string ascending
+        return -1;
+    }
+    if (nameA > nameB) {
+        return 1;
+    }
+    return 0; //default
+}
+
+exports.nameCompare = nameCompare;
