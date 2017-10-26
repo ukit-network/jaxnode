@@ -77,7 +77,7 @@ describe('Routes', function () {
     });
 
     describe('GET Code with Page', function () {
-        it('responds to /Code/1', function testCode(done) {
+        it('responds to /Code/0', function testCode(done) {
             this.timeout(10000);
             request(app)
                 .get('/Code/1')
