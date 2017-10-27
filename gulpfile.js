@@ -5,6 +5,7 @@ var eslint = require('gulp-eslint');
 var excludeGitignore = require('gulp-exclude-gitignore');
 var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
+var isparta = require('isparta');
 var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 var coveralls = require('gulp-coveralls');
@@ -26,10 +27,11 @@ gulp.task('pre-test', function () {
         .pipe(istanbul({
             includeUntested: true
         }))
+        .pipe(istanbul({ instrumenter: isparta.Instrumenter }))
         .pipe(istanbul.hookRequire());
 });
 
-gulp.task('test', ['pre-test'], function (cb) {
+gulp.task('test', function (cb) { // ['pre-test'], 
     var mochaErr;
 
     gulp.src('tests/*.js')

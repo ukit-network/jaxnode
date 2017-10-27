@@ -39,13 +39,17 @@ describe('Services', function () {
 
     describe('GET GitHub Code', function () {
         it('Grab repos', function getGitHubData(done) {
-            githubdata(function (err, results) {
-                if (err) {
-                    return done(err);
-                }
+            githubdata().then(results => {
                 assert(results.repos[0].name === 'gulptest');
                 done();
-            });
+            }).catch(err => console.error(err));
+            // githubdata(function (err, results) {
+            //     if (err) {
+            //         return done(err);
+            //     }
+            //     assert(results.repos[0].name === 'gulptest');
+            //     done();
+            // });
         });
     });
 

@@ -16,21 +16,20 @@ function getSponsors(req, res) {
     res.send(getTheSponsors());
 }
 
-function getGitHubCode(req, res) {
-    req.getCode(function callback(err, results) {
-        if (err) {
-            console.log('problem with request: ' + err);
-            res.status(500).send({
-                message: 'problem with request',
-                error: {
-                    status: '500',
-                    stack: 'problem with request'
-                }
-            });
-        } else {
-            res.send(results.repos);
-        }
-    });
+async function getGitHubCode(req, res) {
+    try {
+        const results = await req.getCode();
+        res.send(results.repos);
+    } catch (err) {
+        console.log('problem with request: ' + err);
+        res.status(500).send({
+            message: 'problem with request',
+            error: {
+                status: '500',
+                stack: 'problem with request'
+            }
+        });
+    }
 }
 
 exports.meeting = getNextMeeting;

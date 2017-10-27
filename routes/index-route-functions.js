@@ -48,28 +48,27 @@ exports.index = function index(req, res) {
     });
 };
 
-exports.code = function code(req, res) {
+exports.code = async function code(req, res) {
     var pagenum = 0;
     if (req.params.page && !isNaN(req.params.page)) {
         pagenum = req.params.page;
     }
-    req.getCode(function callback(err, results) {
-        if (err) {
-            console.log('problem with request: ' + err);
-            res.status(500).render('error', {
-                message: 'problem with request',
-                error: {
-                    status: '500',
-                    stack: 'problem with request'
-                }
-            });
-        } else {
-            const sortedRepos = results.repos.sort(nameCompare);
-            const repopage = sortedRepos.slice(parseInt(pagenum) * 10, parseInt(pagenum) * 10 + 10);
-            const pageCount = Math.ceil(sortedRepos.length / 10);
-            res.render('code', { title: 'Jax Node GitHub code', repos: repopage, currPage: pagenum, pageCount: pageCount });
-        }
-    });
+    try {
+        const resp = await req.getCode();
+        const sortedRepos = resp.repos.sort(nameCompare);
+        const repopage = sortedRepos.slice(parseInt(pagenum) * 10, parseInt(pagenum) * 10 + 10);
+        const pageCount = Math.ceil(sortedRepos.length / 10);
+        res.render('code', { title: 'Jax Node GitHub code', repos: repopage, currPage: pagenum, pageCount: pageCount });
+    } catch (err) {
+        console.log('problem with request: ' + err);
+        res.status(500).render('error', {
+            message: 'problem with request',
+            error: {
+                status: '500',
+                stack: 'problem with request'
+            }
+        });
+    }
 };
 
 exports.api = function api(req, res) {
