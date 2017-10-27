@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./bin/www",
     "mon": "nodemon ./bin/www",
-    "test": "jest --coverage"
+    "test": "jest --coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
   },
   "dependencies": {
     "async": "^1.5.1",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "chai": "^3.4.1",
+    "coveralls": "^3.0.0",
     "gulp": "^3.9.0",
     "gulp-coveralls": "^0.1.0",
     "gulp-eslint": "^4.0.0",

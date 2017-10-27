@@ -797,6 +797,16 @@ coveralls@^2.11.2:
     minimist "1.2.0"
     request "2.75.0"
 
+coveralls@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/coveralls/-/coveralls-3.0.0.tgz#22ef730330538080d29b8c151dc9146afde88a99"
+  dependencies:
+    js-yaml "^3.6.1"
+    lcov-parse "^0.0.10"
+    log-driver "^1.2.5"
+    minimist "^1.2.0"
+    request "^2.79.0"
+
 cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -2748,7 +2758,7 @@ js-yaml@3.6.1, js-yaml@3.x:
     argparse "^1.0.7"
     esprima "^2.6.0"
 
-js-yaml@^3.7.0, js-yaml@^3.9.1:
+js-yaml@^3.6.1, js-yaml@^3.7.0, js-yaml@^3.9.1:
   version "3.10.0"
   resolved "https://registry.yarnpkg.com/js-yaml/-/js-yaml-3.10.0.tgz#2e78441646bd4682e963f22b6e92823c309c62dc"
   dependencies:
@@ -2851,7 +2861,7 @@ lcid@^1.0.0:
   dependencies:
     invert-kv "^1.0.0"
 
-lcov-parse@0.0.10:
+lcov-parse@0.0.10, lcov-parse@^0.0.10:
   version "0.0.10"
   resolved "https://registry.yarnpkg.com/lcov-parse/-/lcov-parse-0.0.10.tgz#1b0b8ff9ac9c7889250582b70b71315d9da6d9a3"
 
@@ -3055,7 +3065,7 @@ lodash@~1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-1.0.2.tgz#8f57560c83b59fc270bd3d561b690043430e2551"
 
-log-driver@1.2.5:
+log-driver@1.2.5, log-driver@^1.2.5:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/log-driver/-/log-driver-1.2.5.tgz#7ae4ec257302fd790d557cb10c97100d857b0056"
 
