@@ -8,23 +8,23 @@ const cache = require('memory-cache');
 function getCode(cb) {
     const githubcache = cache.get('githubrepos');
     if (githubcache) {
-       cb(null, { repos: githubcache });
+        cb(null, { repos: githubcache });
     } else {
-        fetch('https://api.github.com/orgs/jaxnode-ug/repos', 
-            { 
-                headers: { 
+        fetch('https://api.github.com/orgs/jaxnode-ug/repos',
+            {
+                headers: {
                     Accept: 'application/vnd.github.v3+json',
-                    'User-Agent': 'JaxNode' 
-                } 
+                    'User-Agent': 'JaxNode'
+                }
             }).then(response => {
-                return response.json();
-            }).then(json => {
-                cache.put('githubrepos', json, 3600000);
-                cb(null, { repos: json });
-            }).catch(err => { 
-                console.error(err);
-                cb(err, { repos: [] });
-            });
+            return response.json();
+        }).then(json => {
+            cache.put('githubrepos', json, 3600000);
+            cb(null, { repos: json });
+        }).catch(err => {
+            console.error(err);
+            cb(err, { repos: [] });
+        });
     }
 }
 
