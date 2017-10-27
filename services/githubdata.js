@@ -1,43 +1,31 @@
 'use strict';
 
-var https = require('https');
-
-/*
- * Set up GitHub http options for the GitHub API.
- */
-var gitHubOptions = {
-    hostname: 'api.github.com',
-    port: 443,
-    path: '/orgs/jaxnode-ug/repos',
-    method: 'GET',
-    headers: {
-        Accept: 'application/vnd.github.v3+json',
-        'User-Agent': 'JaxNode'
-    }
-};
-
+const fetch = require('node-fetch');
+const cache = require('memory-cache');
 /*
  * Setting up link to GitHub
  */
 function getCode(cb) {
-    var reposText = '';
-    var githubReq = https.request(gitHubOptions, function (response) {
-        response.setEncoding('utf8');
-        response.on('data', function (chunk) {
-            //console.log('receiving data.');
-            reposText += chunk;
-        });
-        response.on('end', function () {
-            var reposArray = JSON.parse(reposText);
-            cb(null, { repos: reposArray });
-        });
-    });
-    githubReq.on('error', function (e) {
-        console.log('problem with request: ' + e.message);
-        cb(e, { repos: [] });
-    });
-    githubReq.write('data\n');
-    githubReq.end();
+    const githubcache = cache.get('githubrepos');
+    if (githubcache) {
+       cb(null, { repos: githubcache });
+    } else {
+        fetch('https://api.github.com/orgs/jaxnode-ug/repos', 
+            { 
+                headers: { 
+                    Accept: 'application/vnd.github.v3+json',
+                    'User-Agent': 'JaxNode' 
+                } 
+            }).then(response => {
+                return response.json();
+            }).then(json => {
+                cache.put('githubrepos', json, 3600000);
+                cb(null, { repos: json });
+            }).catch(err => { 
+                console.error(err);
+                cb(err, { repos: [] });
+            });
+    }
 }
 
 module.exports = getCode;
