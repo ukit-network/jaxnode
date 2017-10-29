@@ -1,9 +1,10 @@
 'use strict';
 
-var https = require('https');
-var nextMeeting = '';
-var cache = require('memory-cache');
-var moment = require('moment-timezone');
+//var https = require('https');
+//var nextMeeting = '';
+const fetch = require('node-fetch');
+const cache = require('memory-cache');
+const moment = require('moment-timezone');
 
 /*
  * Set up http options for the Meetup API.
@@ -23,6 +24,27 @@ function setTimeToNewYork(meetingArray) {
         var currTime = moment(meetingArray[0].time).utc().clone();
         meetingArray[0].time = currTime.tz('America/New_York').format('lll');
     }
+}
+
+function getNextMeetupV2() {
+    return new Promise((resolve, reject) => {
+        const meetingCache = cache.get('nextMeeting');
+        if (meetingCache) {
+            console.log(meetingCache);
+            resolve(meetingCache[0]);
+        } else {
+            fetch('https://api.meetup.com/2/events?&sign=true&group_id=10250862&page=20&key=' + process.env.meetupapi_key).then(response => {
+                return response.json();
+            }).then(json => {
+                const meetingArray = json.results;
+                setTimeToNewYork(meetingArray);
+                cache.put('nextMeeting', meetingArray, 3600000);
+                resolve(meetingArray[0]);
+            }).catch(err => {
+                reject(err);
+            });
+        }
+    });
 }
 
 function getNextMeetup(cb) {
@@ -58,4 +80,5 @@ function getNextMeetup(cb) {
     sreq.end();
 }
 
-module.exports = getNextMeetup;
+// module.exports = getNextMeetup;
+module.exports = getNextMeetupV2;

@@ -49,7 +49,7 @@ describe('Test Route with no upcoming meetups', function () {
         test('responds to /', function testHomepage(done) {
             request(app).get('/').then(response => {
                 expect(response.header['content-type']).toBe('text/html; charset=utf-8');
-                expect(response.statusCode).toBe(200);
+                expect(response.statusCode).toBe(500);
                 done();
             });
         });

@@ -2,14 +2,13 @@
 
 var getTheSponsors = require('../services/sponsordata');
 
-function getNextMeeting(req, res) {
-    req.service.getNextMeetup(function callback(err, results) {
-        if (err) {
-            res.status(500).send({ meeting: 'Error occured' });
-        } else {
-            res.send({ meeting: results });
-        }
-    });
+async function getNextMeeting(req, res) {
+    try {
+        const results = await req.service.getNextMeetup();
+        res.send({ meeting: results });
+    } catch (err) {
+        res.status(500).send({ meeting: 'Error occured' });
+    }
 }
 
 function getSponsors(req, res) {
