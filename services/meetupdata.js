@@ -26,6 +26,9 @@ function setTimeToNewYork(meetingArray) {
     }
 }
 
+/*
+ * This is the third method used for retrieving the next meetup. It uses Node 8's async and await syntax.
+ */
 async function getNextMeetupV3() {
     const meetingCache = cache.get('nextMeeting');
     if (meetingCache) {
@@ -40,6 +43,9 @@ async function getNextMeetupV3() {
     }
 }
 
+/*
+ * This is the second method used for retrieving the next meetup. It used a Promise.
+ */
 function getNextMeetupV2() {
     return new Promise((resolve, reject) => {
         const meetingCache = cache.get('nextMeeting');
@@ -60,6 +66,9 @@ function getNextMeetupV2() {
     });
 }
 
+/*
+ * This is the original method used for retrieving the next meetup. It used a error first callback
+ */
 function getNextMeetup(cb) {
     var sreq = https.request(httpsOptions, function (response) {
         response.setEncoding('utf8');

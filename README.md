@@ -19,6 +19,6 @@ They are as follows;
 * process.env.twitter_atk = Twitter access_token_key
 * process.env.twitter_ats = Twitter access_token_secret
 
-Moved site to Heroku. Upgraded to Node.js v8.8.1.
+Moved site to Heroku. Upgraded to Node.js v8.8.1. Version 3.0 of this code requires Node.js 8.6 or higher because of the use of async/await.
 
 Copyright 2017 David Fekke
