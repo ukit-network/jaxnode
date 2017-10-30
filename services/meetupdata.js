@@ -30,7 +30,6 @@ function getNextMeetupV2() {
     return new Promise((resolve, reject) => {
         const meetingCache = cache.get('nextMeeting');
         if (meetingCache) {
-            console.log(meetingCache);
             resolve(meetingCache[0]);
         } else {
             fetch('https://api.meetup.com/2/events?&sign=true&group_id=10250862&page=20&key=' + process.env.meetupapi_key).then(response => {
