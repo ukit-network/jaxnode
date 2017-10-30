@@ -26,6 +26,20 @@ function setTimeToNewYork(meetingArray) {
     }
 }
 
+async function getNextMeetupV3() {
+    const meetingCache = cache.get('nextMeeting');
+    if (meetingCache) {
+        return meetingCache[0];
+    } else {
+        const response = await fetch('https://api.meetup.com/2/events?&sign=true&group_id=10250862&page=20&key=' + process.env.meetupapi_key);
+        const json = await response.json();
+        const meetingArray = json.results;
+        setTimeToNewYork(meetingArray);
+        cache.put('nextMeeting', meetingArray, 3600000);
+        return meetingArray[0];    
+    }
+}
+
 function getNextMeetupV2() {
     return new Promise((resolve, reject) => {
         const meetingCache = cache.get('nextMeeting');
@@ -80,4 +94,5 @@ function getNextMeetup(cb) {
 }
 
 // module.exports = getNextMeetup;
-module.exports = getNextMeetupV2;
+// module.exports = getNextMeetupV2;
+module.exports = getNextMeetupV3;

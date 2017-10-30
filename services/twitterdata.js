@@ -25,6 +25,25 @@ function gatherTweets(item, callback) {
     callback(null, { text: twitterText, icon: item.user.profile_image_url, name: item.user.screen_name });
 }
 
+function formatTweets(item) {
+    var resultText = item.text.replace(/((([A-Za-z]{3,9}:(?:\/\/)?)(?:[-;:&=\+\$,\w]+@)?[A-Za-z0-9.-]+|(?:www.|[-;:&=\+\$,\w]+@)[A-Za-z0-9.-]+)((?:\/[\+~%\/.\w-_]*)?\??(?:[-\+=&;%@.\w_]*)#?(?:[\w]*))?)/, '<a href="$1">$1</a>');
+    var twitterText = resultText.replace(/@(\w+)/, '<a href="https://twitter.com/$1">@$1</a>');
+    return { text: twitterText, icon: item.user.profile_image_url, name: item.user.screen_name };
+}
+
+async function getFeedV2() {
+    var cTweets = cache.get('Tweets');
+    if (cTweets !== null) {
+        return { tweets: cTweets };
+    } else {
+        const params = {include_entities: true}; // eslint-disable-line
+        const data = await twit.get('/statuses/user_timeline', params);
+        const results = data.map(formatTweets);
+        cache.put('Tweets', results, 3600000);
+        return { tweets: results };
+    }
+}
+
 function getFeed(cb) {
     var cTweets = cache.get('Tweets');
     if (cTweets !== null) {
@@ -40,4 +59,4 @@ function getFeed(cb) {
     }
 }
 
-module.exports = getFeed;
+module.exports = getFeedV2;

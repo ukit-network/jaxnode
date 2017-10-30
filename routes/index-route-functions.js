@@ -5,16 +5,14 @@ const { promisify } = require('util');
  */
 
 exports.index = async function index(req, res) {
-    const getMyLatestTweets = promisify(req.service.getTweets);
+    //const getMyLatestTweets = promisify(req.service.getTweets);
     try {
         const meetingArray = await req.service.getNextMeetup();
-        const tweetResults = await getMyLatestTweets();
-        //if (meetingArray) {
+        const tweetResults = await req.service.getTweets();
         const displayMeetup = Object.keys(meetingArray).length !== 0;
         if (displayMeetup && meetingArray.hasOwnProperty('venue')) {
             var displayMap = Object.keys(meetingArray.venue).length !== 0;
         }
-        //}
         const displayTweets = tweetResults.tweets.length !== 0;
         res.render('index', {
             title: 'JaxNode User Group',
