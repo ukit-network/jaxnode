@@ -106,7 +106,7 @@ describe('Routes', function () {
         test('responds to /Code/4', function testCode(done) {
             request(app).get('/Code/4').then((response) => {
                 expect(response.header['content-type']).toBe('text/html; charset=utf-8');
-                expect(response.statusCode).toBe(500);
+                expect(response.statusCode).toBe(404);
                 done();
             });
         });
