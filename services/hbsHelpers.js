@@ -39,7 +39,6 @@ function addHBSHelpers(Handlebars) {
             } else {
                 previous = new Handlebars.SafeString('<li class="page-item"><a class="page-link" href="/code/' + (currPage - 1) + '">Previous</a></li>');
             }
-            // (currPage - 1)
         }
         for (let i = 0; i < total; i++) {
             if (i === currPage) {
