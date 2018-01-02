@@ -22,4 +22,4 @@ They are as follows;
 
 Moved site to Heroku. Upgraded to Node.js v9.3.0. Version 3.0 of this code requires Node.js 8.6 or higher because of the use of async/await.
 
-Copyright 2017 David Fekke
+Copyright 2018 David Fekke
