@@ -32,7 +32,7 @@
     "supertest": "^1.1.0"
   },
   "engines": {
-    "node": "9.6.0"
+    "node": "9.6.1"
   },
   "license": "Apache-2.0"
 }
