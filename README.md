@@ -7,7 +7,7 @@ This is the source code for the JaxNode website.
 [![Build Status](https://travis-ci.org/davidfekke/jaxnode.svg?branch=release)](https://travis-ci.org/davidfekke/jaxnode)
 [![Coverage Status](https://coveralls.io/repos/github/davidfekke/jaxnode/badge.svg?branch=master)](https://coveralls.io/github/davidfekke/jaxnode?branch=master)
 [![Node v8](http://img.shields.io/badge/node-v10.13.0-brightgreen.svg)](https://nodejs.org)
-[![Node v9](http://img.shields.io/badge/node-v11.1.0-brightgreen.svg)](https://nodejs.org)
+[![Node v9](http://img.shields.io/badge/node-v11.2.0-brightgreen.svg)](https://nodejs.org)
 
 The website can be viewed at [https://www.jaxnode.com](https://www.jaxnode.com).
 
