@@ -7,7 +7,7 @@ var termRoutes = require('./terms');
 var router = express.Router(); // eslint-disable-line
 
 /* GET home page. */
-router.get('/', indexRoutes.index);
+router.get('/', indexRoutes.tempindex);
 router.get('/contact', contact);
 router.get('/terms', termRoutes.terms);
 router.get('/privacy', termRoutes.privacy);

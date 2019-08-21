@@ -28,26 +28,26 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-describe('Routes with bad Twitter', function () {
+//describe('Routes with bad Twitter', function () {
 
-    beforeEach(() => {
-        var exposeService2 = function (req, resp, next) {
-            req.service = service;
-            req.getCode = githubData;
-            next();
-        };
+    // beforeEach(() => {
+    //     var exposeService2 = function (req, resp, next) {
+    //         req.service = service;
+    //         req.getCode = githubData;
+    //         next();
+    //     };
 
-        app.use('/', exposeService2, routes);
-    });
+    //     app.use('/', exposeService2, routes);
+    // });
 
-    describe('GET Index', function () {
-        test('responds to /', function testHomepage(done) {
-            request(app).get('/').then(response => {
-                expect(response.header['content-type']).toBe('text/html; charset=utf-8');
-                expect(response.statusCode).toBe(500);
-                done();
-            });
-        });
-    });
+    // describe('GET Index', function () {
+    //     test('responds to /', function testHomepage(done) {
+    //         request(app).get('/').then(response => {
+    //             expect(response.header['content-type']).toBe('text/html; charset=utf-8');
+    //             expect(response.statusCode).toBe(500);
+    //             done();
+    //         });
+    //     });
+    // });
 
-});
+//});

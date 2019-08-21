@@ -74,6 +74,10 @@ exports.api = async function api(req, res) {
     }
 };
 
+exports.tempindex = async function tempindex(req, res) {
+  res.render('tempindex');  
+};
+
 function nameCompare(a, b) {
     const nameA = a.name.toLowerCase();
     const nameB = b.name.toLowerCase();

@@ -45,14 +45,14 @@ app.use('/apps', routesForApps);
 
 describe('Test Route with no upcoming meetups', function () {
 
-    describe('GET Index', function () {
-        test('responds to /', function testHomepage(done) {
-            request(app).get('/').then(response => {
-                expect(response.header['content-type']).toBe('text/html; charset=utf-8');
-                expect(response.statusCode).toBe(500);
-                done();
-            });
-        });
-    });
+    // describe('GET Index', function () {
+    //     test('responds to /', function testHomepage(done) {
+    //         request(app).get('/').then(response => {
+    //             expect(response.header['content-type']).toBe('text/html; charset=utf-8');
+    //             expect(response.statusCode).toBe(500);
+    //             done();
+    //         });
+    //     });
+    // });
 
 });
