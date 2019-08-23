@@ -1,0 +1,18 @@
+[
+    {
+        "id": "263966783",
+        "name": "Lets build a Kanban board with Vue.js and Vuetify",
+        "time": "Thursday, September 19, 2019",
+        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/263966783/",
+        "description": "",
+        "venue": {
+                "name": "Availity",
+                "address_1": "5555 Gate Pkwy #110",
+                "city": "Jacksonville",
+                "state": "Fl",
+                "zip": "32256",
+                "lat": "30.2480234",
+                "lon": "-81.524463"
+        }
+    }
+]
