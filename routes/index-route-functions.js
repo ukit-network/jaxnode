@@ -12,6 +12,7 @@ exports.index = async function index(req, res) {
             var displayMap = Object.keys(meetingArray.venue).length !== 0;
         }
         const displayTweets = tweetResults.tweets.length !== 0;
+        console.log(`meetingArray: ${meetingArray}, length: ${Object.keys(meetingArray).length}`);
         res.render('index', {
             title: 'JaxNode User Group',
             meeting: meetingArray,
