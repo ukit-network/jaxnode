@@ -5,12 +5,11 @@
   "main": "./bin/www",
   "scripts": {
     "start": "node ./bin/www",
-    "mon": "nodemon ./bin/www",
-    "test": "jest --coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage"
+    "test": "jest"
   },
   "dependencies": {
     "async": "^1.5.1",
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "body-parser": "^1.18.3",
     "cookie-parser": "~1.4.1",
     "debug": "~2.6.9",
@@ -26,13 +25,12 @@
   "devDependencies": {
     "chai": "^3.4.1",
     "coveralls": "^3.0.2",
-    "jest": "^23.6.0",
-    "nodemon": "^1.18.7",
+    "jest": "^24.9.0",
     "sinon": "^1.17.2",
     "supertest": "^3.3.0"
   },
   "engines": {
-    "node": "12.11.1"
+    "node": "12.13.0"
   },
   "license": "Apache-2.0"
 }
