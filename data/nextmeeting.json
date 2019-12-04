@@ -1,10 +1,10 @@
 [
     {
         "id": "263966783",
-        "name": "TBD",
+        "name": "Svelte and Sapper",
         "time": "Thursday, January 16, 2020",
         "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/266715960/",
-        "description": "This will be the first JaxNode meeting of the year. Subject TBD.",
+        "description": "Svelte is a JavaScript compiler that generates really fast and really small UI component code in JavaScript that you can use on the client-side (browser) as well as the server-side (NodeJS). The programming model is dead simple because the compiler does the heavy lifting - including keeping track of when state is being modified. You put {stateVariable} expressions in your HTML; state variables are nothing but JavaScript local vars, and you change state by simply assigning a new value. Compiler pays attention and generates code to make it all work./n\nSapper is a framework that uses Svelte to build web applications that operate at 3 levels - client side interactive UI (like React), server-side rendering for speed and SEO (like Node+Express), and finally fully static compile time generated sites (like Gatsby/Next/Nuxt). It has a routing system built in that prefetches page data when you hover on a link.The result is a super fast and \"svelte\" user experience.\n\nJitesh Doshi is a developer and solution architect with SpinSpire, a company that specializes in Open Source ",
         "venue": {
                 "name": "Availity",
                 "address_1": "5555 Gate Pkwy #110",
