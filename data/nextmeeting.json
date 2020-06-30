@@ -1,10 +1,10 @@
 [
     {
-        "id": "268982525",
-        "name": "Docker development for Node.js",
-        "time": "Thursday, June 18, 2020",
-        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/271018945/",
-        "description": "David Fekke will be presenting on using Docker for developing your Node.js applications. This presentation will cover Docker basics, Docker compose, deploying your apps as a docker container and why you would want to make Docker part of your development.        Building and deploying new applications is faster with containers. Docker containers wrap up software and its dependencies into a standardized unit for software development that includes everything it needs to run: code, runtime, system tools and libraries. This guarantees that your application will always run the same and makes collaboration as simple as sharing a container image.",
+        "id": "271632496",
+        "name": "Deno",
+        "time": "Thursday, July 16, 2020",
+        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/271632496/",
+        "description": "Ryan Dahl, the creator of Node.js has a new project called Deno. Deno is a runtime for Typescript. Ryan had the opportunity to think about what he would have done differently if he had to create Node again. We will explore some of the things you can do with Deno, and how it compares to Node.js.",
         "venue": {
                 "name": "Online",
                 "address_1": "Details on meetup.com",

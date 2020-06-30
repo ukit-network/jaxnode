@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:14.0.0
+FROM mhart/alpine-node:12.18.2
 
 RUN npm install -g yarn
 
