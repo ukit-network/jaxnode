@@ -1,10 +1,10 @@
 [
     {
-        "id": "271883306",
-        "name": "Svelte",
-        "time": "Thursday, August 20, 2020",
-        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/271883306/",
-        "description": "What is Svelte? Svelte is a JavaScript framework (actually, a compiler) to build UI in the browser (solves the same problem as React, Vue, Angular, etc.). Very easy to learn (3-4 hours). It's just standard HTML+JavaScript. No new syntax to learn. It's truly reactive - unlike other frameworks, you don't have to tell the framework to modify state, you just do it and the compiler knows It's a compiler, not a framework -- which means most work is done at build time, which produces faster and smaller code It has no runtime libraries -- it just uses browser APIs It doesn't use Virtual DOM -- it works on the real browser DOM, but efficiently",
+        "id": "273380217",
+        "name": "TBD",
+        "time": "Thursday, October 15, 2020",
+        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/273380217/",
+        "description": "TBD",
         "venue": {
                 "name": "Online",
                 "address_1": "Details on meetup.com",
