@@ -15,7 +15,7 @@
     "cookie-parser": "~1.4.1",
     "debug": "~2.6.9",
     "express": "^4.16.4",
-    "express-hbs": "^2.2.0",
+    "express-hbs": "^2.3.4",
     "memory-cache": "^0.1.4",
     "moment-timezone": "^0.5.23",
     "morgan": "^1.9.1",
@@ -27,7 +27,7 @@
     "chai": "^3.4.1",
     "coveralls": "^3.0.2",
     "jest": "^24.9.0",
-    "nodemon": "^2.0.2",
+    "nodemon": "^2.0.4",
     "sinon": "^1.17.2",
     "supertest": "^3.3.0"
   },
