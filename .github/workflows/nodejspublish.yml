@@ -6,7 +6,7 @@ name: Node.js Package
 on:
   push:
     branches:
-      - master
+      - release
 
 jobs:
   build:
@@ -18,3 +18,8 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm test
+      - uses: akhileshns/heroku-deploy@v3.5.6 # This is the action
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "jaxnode" 
+          heroku_email: "david@fekke.com"
