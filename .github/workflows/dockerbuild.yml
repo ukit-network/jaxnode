@@ -1,14 +1,11 @@
 # This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
 # For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
 
-name: Node.js Package
+name: Docker Build
 
 on:
   push:
     branches:
-      - release
-  pull_request:
-    branches:  
       - release
 
 jobs:
@@ -21,8 +18,11 @@ jobs:
           node-version: 12
       - run: npm ci
       - run: npm test
-      - uses: akhileshns/heroku-deploy@v3.5.6 # This is the action
+      - run: docker build -t davidfekke/jaxnode:latest .
+      - name: Push to Docker Hub
+        uses: docker/build-push-action@v1
         with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: "jaxnode" 
-          heroku_email: "david@fekke.com"
+            username: ${{ secrets.DOCKER_USERNAME }}
+            password: ${{ secrets.DOCKER_PASSWORD }}
+            repository: davidfekke/jaxnode
+            tag_with_ref: false
