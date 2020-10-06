@@ -1,10 +1,10 @@
 [
     {
         "id": "273380217",
-        "name": "TBD",
+        "name": "ES2020",
         "time": "Thursday, October 15, 2020",
         "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/273380217/",
-        "description": "TBD",
+        "description": "In this meeting we will cover some of the new laguage features in the ES2020 spec coming to JavaScript and Node.js",
         "venue": {
                 "name": "Online",
                 "address_1": "Details on meetup.com",
