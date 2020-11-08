@@ -6,6 +6,7 @@
 exports.index = async function index(req, res) {
     try {
         const meetingArray = await req.service.getNextMeetup();
+        console.log(meetingArray);
         const tweetResults = await req.service.getTweets();
         const displayMeetup = meetingArray !== undefined && Object.keys(meetingArray).length !== 0;
         if (displayMeetup && meetingArray.hasOwnProperty('venue')) {

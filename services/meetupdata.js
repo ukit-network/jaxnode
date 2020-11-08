@@ -107,6 +107,7 @@ function getNextMeetup(cb) {
  * This is the third method used for retrieving the next meetup. It uses Node 8's async and await syntax.
  */
 async function getNextMeetupV4() {
+    console.log('The getNextMeetupV4 function was called')
     return nextmeeting[0];
 }
 
