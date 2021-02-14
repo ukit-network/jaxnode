@@ -1,10 +1,10 @@
 [
     {
-        "id": "273380217",
-        "name": "ES2020",
-        "time": "Thursday, October 15, 2020",
-        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/273380217/",
-        "description": "In this meeting we will cover some of the new laguage features in the ES2020 spec coming to JavaScript and Node.js",
+        "id": "276222633",
+        "name": "Using Node.js to mine Reddit for Stocks on WSB",
+        "time": "Thursday, Feburary 18, 2021",
+        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/276222633/",
+        "description": "YOLO! In this presentation we will look at how you can use Node.js to mine Reddit posts on Wall Street Bets to find stock tips. Don't have any FOMO. As you might have heard recently WSB identified stocks including GameStop ($GME) that were over-shorted by 138%. Retail investors then created a 'Short Squeeze' on $GME and other stocks causing their price to increase by nearly 1000%.",
         "venue": {
                 "name": "Online",
                 "address_1": "Details on meetup.com",
