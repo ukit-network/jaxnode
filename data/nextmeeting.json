@@ -1,10 +1,10 @@
 [
     {
-        "id": "276444715",
-        "name": "Using DeFi Blockchain technology with Node.js",
-        "time": "Thursday, March 18, 2021",
-        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/276444715/",
-        "description": "In this meeting we will be discussing how blockchain technology works, and how to use it with Node.js. We will also be presenting on DeFi, Ethereum, Smart Contracts and the Solidity programming language.",
+        "id": "277024060",
+        "name": "Gatsby 3.0",
+        "time": "Thursday, April 15, 2021",
+        "event_url": "https://www.meetup.com/Jax-Node-js-UG/events/277024060/",
+        "description": "We will be discussing Gatsby 3.0, the React Static Site Generator.",
         "venue": {
                 "name": "Online",
                 "address_1": "Details on meetup.com",
