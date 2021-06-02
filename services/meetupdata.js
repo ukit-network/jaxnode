@@ -3,6 +3,7 @@
 //var https = require('https');
 //var nextMeeting = '';
 const fetch = require('node-fetch');
+const axios = require('axios');
 const cache = require('memory-cache');
 const moment = require('moment-timezone');
 const nextmeeting = require('../data/nextmeeting.json');
@@ -20,11 +21,16 @@ var httpsOptions = {
 /*
  * This function always sets the meeting to the correct time.
  */
-function setTimeToNewYork(meetingArray) {
+function setTimeToNewYorkForArray(meetingArray) {
     if (meetingArray && meetingArray.length > 0) {
         var currTime = moment(meetingArray[0].time).utc().clone();
         meetingArray[0].time = currTime.tz('America/New_York').format('lll');
     }
+}
+
+function setTimeToNewYork(meeting) {
+    const currTime = moment(meeting.time).utc().clone();
+    meeting.time = currTime.tz('America/New_York').format('lll');
 }
 
 /*
@@ -43,6 +49,7 @@ async function getNextMeetupV3() {
         return meetingArray[0];    
     }
 }
+
 
 /*
  * This is the second method used for retrieving the next meetup. It used a Promise.
@@ -111,6 +118,23 @@ async function getNextMeetupV4() {
     return nextmeeting[0];
 }
 
+
+async function getNextMeetupV5() {
+    const meetingCache = cache.get('nextMeeting');
+    if (meetingCache) {
+        return meetingCache;
+    } else {
+        const response = await axios.get('https://api.meetup.com/Jax-Node-js-UG/events?page=2');
+        const meeting = response.data[0];
+        
+        setTimeToNewYork(meeting);
+        cache.put('nextMeeting', meeting, 3600000);
+        return meeting;
+    }
+    
+    //return nextmeeting[0];
+}
+
 // module.exports = getNextMeetup;
 // module.exports = getNextMeetupV2;
-module.exports = getNextMeetupV4;
+module.exports = getNextMeetupV5;

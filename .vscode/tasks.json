@@ -1,23 +1,38 @@
 {
-    "version": "0.1.0",
+    "version": "2.0.0",
     "command": "npm",
-    "isShellCommand": true,
     "args": [],
     "tasks": [
         {
-            "taskName": "test",
-            "args": [],
-            "isBuildCommand": false
+            "label": "test",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "test"
+            ],
+            "problemMatcher": [],
+            "group": "test"
         },
         {
-            "taskName": "start",
-            "args": [],
-            "isBuildCommand": true
+            "label": "start",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "start"
+            ],
+            "problemMatcher": [],
+            "group": "build"
         },
         {
-            "taskName": "run",
-            "args": ["mon"],
-            "isBuildCommand": true
+            "label": "run",
+            "type": "shell",
+            "command": "npm",
+            "args": [
+                "run",
+                "mon"
+            ],
+            "problemMatcher": [],
+            "group": "build"
         }
     ]
 }
