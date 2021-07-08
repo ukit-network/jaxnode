@@ -1,40 +1,77 @@
-/// <reference path="typings/node/node.d.ts"/>
+'use strict';
+const express = require('express');
+const twitterdata = require('./services/twitterdata.js');
+const meetupdata = require('./services/meetupdata.js');
+const githubData = require('./services/githubdata.js');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const servicefactory = require('./services/jaxnode-service.js');
 
-/**
- * Module dependencies.
- */
+const service = servicefactory(meetupdata, twitterdata);
 
-var express = require('express');
-var routes = require('./routes');
-var user = require('./routes/user');
-var contact = require('./routes/contact');
-var sponsors = require('./routes/sponsors');
-var http = require('http');
-var path = require('path');
+const routes = require('./routes/index');
+const routesForApps = require('./routes/appsroutes');
+const routesForApis = require('./routes/apiroutes');
 
-var app = express();
+const app = express();
 
+// view engine setup
+const hbs = require('express-hbs');
+require('./services/hbsHelpers.js')(hbs);
 
-// all environments
-app.set('port', process.env.PORT || 3000);
+// Use `.hbs` for extensions and find partials in `views/partials`.
+app.engine('hbs', hbs.express4());
+app.set('view engine', 'hbs');
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
-app.use(express.logger('dev'));
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.favicon(__dirname + '/public/images/favicon.ico'));
 
-// development only
-if ('development' == app.get('env')) {
-  app.use(express.errorHandler());
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+const exposeService = function (req, resp, next) {
+    req.service = service;
+    req.getCode = githubData;
+    next();
+};
+
+app.use('/', exposeService, routes);
+app.use('/apps', routesForApps);
+app.use('/v1/api', exposeService, routesForApis);
+
+// catch 404 and forward to error handler
+app.use(function (req, res) {
+    res.status(404).render('404', { title: '404 Error' });
+});
+
+// error handlers
+
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+    app.use(function (err, req, res) {
+        res.status(err.status || 500);
+        console.log(err.message);
+        res.render('error', {
+            message: err.message,
+            error: err
+        });
+    });
 }
 
-app.get('/', routes.index);
-app.get('/Contact', contact.contact);
-app.get('/Sponsors', sponsors.list);
-
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('Express server listening on port ' + app.get('port'));
+// production error handler
+// no stacktraces leaked to user
+app.use(function (err, req, res) {
+    res.status(err.status || 500);
+    console.log(err.message);
+    res.render('error', {
+        message: err.message,
+        error: {}
+    });
 });
+
+
+module.exports = app;

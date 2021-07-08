@@ -1,0 +1,147 @@
+{{!< LAYOUT}}
+<style type="text/css">
+    #map-canvas { height: 300px; width: 100%; } /* width: 425px; */
+    .list-group-item:first-child { background-color: #55ACEE; color: white; }
+    .list-group-item:first-child:hover { background-color: #55ACEE; color: white; }
+    .list-group-item:first-child a { color: white; }
+    .list-group-item:hover { background-color: #f5f5f5; }
+    #addressWell { margin: 15px; }
+    .bug-height {
+        min-height: 6vh;
+    }
+</style>
+
+{{#if displayCodeOnTheBeach}}
+
+{{/if}}
+
+<div class="col-md-8">
+    {{#if displayMeetup}}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3>Next meeting:&nbsp;<strong>{{meeting.name}}</strong> </h3>
+            <div>{{meeting.time}}</div>
+            <a href='{{meeting.event_url}}' data-event='{{meeting.id}}' class='mu-rsvp-btn'><img src="images/rsvp_btn.png" alt="RSVP"></a>
+        </div>
+        <div class="panel-body" id="meeting-description">
+            <div>
+                {{!-- <span style="color: red;">JaxNode normally meets at Availity the third Thursday of the month. Currently all Future meetings will be held online.</span> --}}
+                {{{meeting.description}}} 
+            </div>
+            <p>&nbsp;</p>
+            {{#if displayMap}}
+            <div id="map-canvas" class="pull-left"></div>
+            <div id="addressWell" class="well well-lg pull-left">
+                {{meeting.venue.name}}<br>
+                {{meeting.venue.address_1}}<br />
+                {{meeting.venue.city}}, {{meeting.venue.state}} {{meeting.venue.zip}}
+            </div>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
+    <div class="jumbotron">
+        <div class="text-center vertical-center">
+            <div class="col-md-4">
+                <img src="images/jaxnodejs.png" alt="Jax Node Logo" class="img-responsive">
+            </div>
+            <div class="col-md-2">
+                <span>&amp;</span>
+            </div>
+            <div class="col-md-4">
+                <img src="images/jaxbeerjs.png" alt="Jax Beer.js Logo" class="img-responsive">
+            </div>
+        </div>
+        
+        
+        <h2>Welcome to the JaxNode User Group</h2>
+        <p>The Jacksonville Node.js and Javascript User Group is for anyone interested in learning more about Node.js and JavaScript.
+            JavaScript was originally created for scripting web browsers, but now JavaScript applications 
+            run on the server, desktop and even robots.</p><p>Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine. Node.js uses an event-driven, 
+            non-blocking I/O model that makes it lightweight and efficient.
+        </p>
+        
+        <a href="http://www.meetup.com/Jax-Node-js-UG" class="btn btn-primary">Join our Meetup</a>
+        <br />
+        <br />
+        
+        <div class="panel panel-default">
+            <div class="panel-body">
+        
+                <p>We also would like to encourage everyone to join the <a href="http://jacksonville-tech.com/" target="_blank" alt="Jacksonville-Tech Slack group signup">Jacksonville-Tech Slack group</a>. 
+                This is a great place to ask questions and find out about what is going on in the tech community here in Jacksonville.
+                <br />
+        
+            </div>
+        </div>
+        
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <p>
+                    Follow us on Twitter or GitHub.
+                </p>
+                    <a href="https://twitter.com/jaxnode" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @jaxnode</a>
+                    <a class="github-button" href="https://github.com/jaxnode" data-style="mega" data-count-href="/jaxnode/followers" data-count-api="/users/jaxnode#followers" data-count-aria-label="# followers on GitHub" aria-label="Follow @jaxnode on GitHub">Follow @jaxnode</a>
+                
+                <div class="vertical-center bug-height">
+                    <a href="https://itunes.apple.com/us/app/jaxnode/id1183086193?ls=1&mt=8" target="_blank" data-popup="true">
+                        <img src="/images/apple.png+@2x.png" alt="iTunes App Store" class="img-responsive inline-block" />
+                    </a>
+                    &nbsp;
+                    <a href="https://play.google.com/store/apps/details?id=com.fekke.jnmobile" target="_blank" data-popup="true">
+                        <img src="/images/google.png+@2x.png" alt="Google Play Store" class="img-responsive inline-block" />
+                    </a>
+                </div>
+                    
+            </div>
+        </div>
+        
+    </div>
+    
+</div>
+<div class="col-md-4">
+    {{#if displayTweets}}
+    <ul class="list-group">
+        <li class="list-group-item">
+            <img src="/images/Twitter_logo_white_sm.png">
+            <a href="https://twitter.com/jaxnode" alt="JaxNode on Twitter">@Jaxnode</a> on Twitter</li>
+            {{#each tweets}}
+            <li class="list-group-item"><span class="list-group-item-text">{{{this.text}}}</span></li>
+            {{/each}}
+    </ul>
+    {{/if}}
+</div>
+
+{{#contentFor "pageScripts"}}
+  {{#if displayMeetup}}
+  <script src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBV9EuRsK_Eg7rzF-zA4ARVrNyPsfKOV_s&sensor=false'></script>
+  <script type="text/javascript">
+    {{#if displayMap}}
+    function initialize() {
+          var myLatlng = new google.maps.LatLng({{meeting.venue.lat}}, {{meeting.venue.lon}});
+            var mapOptions = {
+            center: myLatlng,
+            zoom: 15,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+          };
+          var map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+            var marker = new google.maps.Marker({
+            position: myLatlng,
+            map: map,
+            title:"{{{meeting.venue.name}}}"
+          });
+          var infowindow = new google.maps.InfoWindow({
+            content: '<div>{{meeting.venue.name}}</div>'
+          });
+          google.maps.event.addListener(marker, 'click', function() {
+            infowindow.open(map,marker);
+          });
+        }
+        google.maps.event.addDomListener(window, 'load', initialize);
+    {{/if}}
+        $('#meeting-description img').addClass('img-responsive');
+  </script>
+  {{/if}}
+  <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+  <script async defer id="github-bjs" src="https://buttons.github.io/buttons.js"></script>
+{{/contentFor}}

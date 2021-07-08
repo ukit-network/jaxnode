@@ -1,0 +1,16 @@
+{{!< LAYOUT}}
+  <h1>{{title}}</h1>
+  <p>We are looking for Sponsors. Please contact David Fekke at gmail dot com if you would like help sponsor meetings.</p>
+  <P><em>We would like to thank our current sponsors.</em></P>
+  
+  <div class="list-group">
+  {{#each sponsors}}
+        <li class="list-group-item">
+            <a href="{{this.url}}" alt="{{this.alt}}" target="_blank"><img alt="{{this.alt}}" src="{{this.imagepath}}" class="img-responsive"/></a>
+            <h4>{{this.name}}</h4>
+            <p>
+                {{this.message}}
+            </p>
+        </li>
+  {{/each}}
+  </div>
